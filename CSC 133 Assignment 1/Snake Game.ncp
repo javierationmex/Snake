@@ -1,0 +1,1497 @@
+<Project>
+  <Name>Snake Game</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>UML</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Starter</Name>
+        <Access>Public</Access>
+        <Location left="92" top="922" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public void main()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Game</Name>
+        <Access>Public</Access>
+        <Location left="312" top="922" />
+        <Size width="225" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">GameWorld gw</Member>
+        <Member type="Field">MapView mv</Member>
+        <Member type="Field">ScoreView sv</Member>
+        <Member type="Constructor">public Game()</Member>
+        <Member type="Method">public void play()</Member>
+        <Member type="Method">public void getCommand()</Member>
+        <Member type="Method">public void userEnteredInt(int aValue)</Member>
+        <Member type="Method">public void userEnteredLetter(String letter)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>GameWorld</Name>
+        <Access>Public</Access>
+        <Location left="620" top="922" />
+        <Size width="269" height="740" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int clock</Member>
+        <Member type="Field">int lives</Member>
+        <Member type="Field">int score</Member>
+        <Member type="Field">boolean sound</Member>
+        <Member type="Field">boolean livesRemaining</Member>
+        <Member type="Field">Food food</Member>
+        <Member type="Field">Money money</Member>
+        <Member type="Field">Wall southWall</Member>
+        <Member type="Field">Wall northWall</Member>
+        <Member type="Field">Wall eastWall</Member>
+        <Member type="Field">Wall westWall</Member>
+        <Member type="Field">Snake snake</Member>
+        <Member type="Field">Bird bird</Member>
+        <Member type="Field">Weasel weasel1</Member>
+        <Member type="Field">Weasel weasel2</Member>
+        <Member type="Field">GameObjectCollection gameObjectCollection</Member>
+        <Member type="Field">ObserversCollection observerCollection</Member>
+        <Member type="Constructor">public GameWorld()</Member>
+        <Member type="Method">public void initLayout()</Member>
+        <Member type="Method">public void setSound(boolean sound)</Member>
+        <Member type="Method">public int getClock()</Member>
+        <Member type="Method">public int getLives()</Member>
+        <Member type="Method">public int getScore()</Member>
+        <Member type="Method">public boolean isSound()</Member>
+        <Member type="Method">public void changeSnakeHeading()</Member>
+        <Member type="Method">public void collisionWithBody()</Member>
+        <Member type="Method">public void collisionWithBird()</Member>
+        <Member type="Method">public void collisionWithMoney()</Member>
+        <Member type="Method">public void collisionWithFood()</Member>
+        <Member type="Method">public void collisionWithWall()</Member>
+        <Member type="Method">public void collisionWithWeasel()</Member>
+        <Member type="Method">public void gameClockTick()</Member>
+        <Member type="Method">public void changeStrategies()</Member>
+        <Member type="Method">public void generateMap()</Member>
+        <Member type="Method">public void quit()</Member>
+        <Member type="Method">public void restartGame()</Member>
+        <Member type="Method">public boolean anyLivesRemaining()</Member>
+        <Member type="Method">public void addObserver(IObserver obs)</Member>
+        <Member type="Method">public void notifyObservers()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>GameObject</Name>
+        <Access>Public</Access>
+        <Location left="637" top="1728" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">Location location</Member>
+        <Member type="Field">java.awt.Color color</Member>
+        <Member type="Method">public Location getLocation()</Member>
+        <Member type="Method">public java.awt.Color getColor()</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Location</Name>
+        <Access>Public</Access>
+        <Location left="450" top="2205" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">float x</Member>
+        <Member type="Field">float y</Member>
+        <Member type="Constructor">protected Location()</Member>
+        <Member type="Constructor">protected Location(float x, float y)</Member>
+        <Member type="Method">public void setX(float x)</Member>
+        <Member type="Method">public void setY(float y)</Member>
+        <Member type="Method">public float getX()</Member>
+        <Member type="Method">public float getY()</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Fixed</Name>
+        <Access>Public</Access>
+        <Location left="250" top="2205" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int age</Member>
+        <Member type="Method">public int getAge()</Member>
+        <Member type="Method">public void incrementAge()</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Wall</Name>
+        <Access>Public</Access>
+        <Location left="236" top="2532" />
+        <Size width="244" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int width</Member>
+        <Member type="Field">int height</Member>
+        <Member type="Constructor">public Wall(float x, float y, int width, int height)</Member>
+        <Member type="Method">public int randInt(int min, int max)</Member>
+        <Member type="Method">public String toString()</Member>
+        <Member type="Method">public void setLocation(Location location)</Member>
+        <Member type="Method">public void setColor(Color color)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Money</Name>
+        <Access>Public</Access>
+        <Location left="29" top="2532" />
+        <Size width="186" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int value</Member>
+        <Member type="Constructor">public Money()</Member>
+        <Member type="Method">public int getValue()</Member>
+        <Member type="Method">public int randInt(int min, int max)</Member>
+        <Member type="Method">public String toString()</Member>
+        <Member type="Method">public void setLocation(Location location)</Member>
+        <Member type="Method">public void setColor(Color color)</Member>
+        <Member type="Method">public void changeColor(int red, int green, int blue)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Food</Name>
+        <Access>Public</Access>
+        <Location left="500" top="2532" />
+        <Size width="195" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int amount</Member>
+        <Member type="Constructor">public Food()</Member>
+        <Member type="Method">public void NewMethod()</Member>
+        <Member type="Method">public int getAmount()</Member>
+        <Member type="Method">public int randInt(int min, int max)</Member>
+        <Member type="Method">public String toString()</Member>
+        <Member type="Method">public void setLocation()</Member>
+        <Member type="Method">public void setColor()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Snake</Name>
+        <Access>Public</Access>
+        <Location left="765" top="2532" />
+        <Size width="273" height="407" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">SnakeHead snakeHead</Member>
+        <Member type="Field">BodySegementCollection bodySegmentCollection</Member>
+        <Member type="Field">BodySegment bs1</Member>
+        <Member type="Field">BodySegment bs2</Member>
+        <Member type="Field">BodySegment bs3</Member>
+        <Member type="Field">float prevPartLocationX</Member>
+        <Member type="Field">float PrevPartLocationY</Member>
+        <Member type="Field">float tempPrevPartLocationX</Member>
+        <Member type="Field">float tempPrevPartLocationY</Member>
+        <Member type="Field">int prevPartHeading</Member>
+        <Member type="Field">int tempPrevPartHeading</Member>
+        <Member type="Field">int newSegCount</Member>
+        <Member type="Constructor">public Snake()</Member>
+        <Member type="Method">public SnakeHead getSnakeHead()</Member>
+        <Member type="Method">public void move()</Member>
+        <Member type="Method">public int getNewSegCount()</Member>
+        <Member type="Method">public int setNewSegCount()</Member>
+        <Member type="Method">public String toString()</Member>
+        <Member type="Method">public StringBuilder bodyStringMaker()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Bird</Name>
+        <Access>Public</Access>
+        <Location left="948" top="2078" />
+        <Size width="162" height="264" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int size</Member>
+        <Member type="Field">double deltaX</Member>
+        <Member type="Field">double deltaY</Member>
+        <Member type="Field">float oldX</Member>
+        <Member type="Field">float oldY</Member>
+        <Member type="Constructor">public Bird()</Member>
+        <Member type="Method">public int randInt()</Member>
+        <Member type="Method">public String toString()</Member>
+        <Member type="Method">public void move()</Member>
+        <Member type="Method">public void setLocation()</Member>
+        <Member type="Method">public void setColor()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Moveable</Name>
+        <Access>Public</Access>
+        <Location left="660" top="2205" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int heading</Member>
+        <Member type="Field">int speed</Member>
+        <Member type="Method">public int getHeading()</Member>
+        <Member type="Method">public int getSpeec()</Member>
+        <Member type="Method">public void move()</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SnakeHead</Name>
+        <Access>Public</Access>
+        <Location left="1106" top="2532" />
+        <Size width="162" height="264" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">double deltaX</Member>
+        <Member type="Field">double deltaY</Member>
+        <Member type="Field">float oldX</Member>
+        <Member type="Field">float oldY</Member>
+        <Member type="Constructor">public SnakeHead()</Member>
+        <Member type="Method">public void turn(char direction)</Member>
+        <Member type="Method">public int randInt()</Member>
+        <Member type="Method">public void move()</Member>
+        <Member type="Method">public String toString()</Member>
+        <Member type="Method">public void setLocatoin()</Member>
+        <Member type="Method">public void setColor()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>BodySegmentCollection</Name>
+        <Access>Public</Access>
+        <Location left="797" top="2989" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">Vector theCollection</Member>
+        <Member type="Constructor">public BodySegmentCollection()</Member>
+        <Member type="Method">public void add(Object newObject)</Member>
+        <Member type="Method">public void add(int i, Object newObject)</Member>
+        <Member type="Method">public Iterator getIterator()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>BodySegment</Name>
+        <Access>Public</Access>
+        <Location left="582" top="3265" />
+        <Size width="338" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public BodySegment(int heading, int locationX, int locationY)</Member>
+        <Member type="Method">public void move(int heading, int locationX, int locationY)</Member>
+        <Member type="Method">public int randInt()</Member>
+        <Member type="Method">public void move()</Member>
+        <Member type="Method">public String toString()</Member>
+        <Member type="Method">public void setLocation()</Member>
+        <Member type="Method">public void setColor()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>ISteerable</Name>
+        <Access>Public</Access>
+        <Location left="1143" top="2124" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void turn(char direction)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IColorChangeable</Name>
+        <Access>Public</Access>
+        <Location left="12" top="2837" />
+        <Size width="274" height="102" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void changeColor(int red, int green, int blue)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>ICollection</Name>
+        <Access>Public</Access>
+        <Location left="871" top="1728" />
+        <Size width="207" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void add(Object newObject)</Member>
+        <Member type="Method">void remove(Object newObject)</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>GameObjectCollection</Name>
+        <Access>Public</Access>
+        <Location left="948" top="1379" />
+        <Size width="199" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">Vector theCollection</Member>
+        <Member type="Constructor">public GameObjectCollection()</Member>
+        <Member type="Method">public void add(Object newObject)</Member>
+        <Member type="Method">public void remove(Object newObject)</Member>
+        <Member type="Method">public Iterator getIterator()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>GameObjectIterator</Name>
+        <Access>Public</Access>
+        <Location left="1198" top="1379" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int currElementIndex</Member>
+        <Member type="Constructor">public GameObjectIterator()</Member>
+        <Member type="Method">public boolean hasNext()</Member>
+        <Member type="Method">public Object next()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>BodySegementIterator</Name>
+        <Access>Public</Access>
+        <Location left="993" top="2989" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int currElementIndex</Member>
+        <Member type="Constructor">public BodySegementIterator()</Member>
+        <Member type="Method">public boolean hasNext()</Member>
+        <Member type="Method">public Object next()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IObservable</Name>
+        <Access>Public</Access>
+        <Location left="331" top="1453" />
+        <Size width="210" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void addObserver(IObsesrver obs)</Member>
+        <Member type="Method">void notifyObservers()</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IObserver</Name>
+        <Access>Public</Access>
+        <Location left="17" top="1453" />
+        <Size width="282" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void update(GameWorldProxy proxy, Object arg)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IStrategy</Name>
+        <Access>Public</Access>
+        <Location left="143" top="2971" />
+        <Size width="162" height="102" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void apply()</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IGameWorld</Name>
+        <Access>Public</Access>
+        <Location left="948" top="922" />
+        <Size width="289" height="384" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void setSound(boolean sound)</Member>
+        <Member type="Method">boolean isSound()</Member>
+        <Member type="Method">int getClock()</Member>
+        <Member type="Method">int getLives()</Member>
+        <Member type="Method">int getScore()</Member>
+        <Member type="Method">void initLayout()</Member>
+        <Member type="Method">void changeSnakeHeading(char direction)</Member>
+        <Member type="Method">void collisionWithBody()</Member>
+        <Member type="Method">void collisionWithBird()</Member>
+        <Member type="Method">void collisionWithMoney()</Member>
+        <Member type="Method">void collisionWithFood()</Member>
+        <Member type="Method">void collisionWithWall()</Member>
+        <Member type="Method">void collisionWithWeasel()</Member>
+        <Member type="Method">void gameClockTick()</Member>
+        <Member type="Method">void generateMap()</Member>
+        <Member type="Method">void quit()</Member>
+        <Member type="Method">void restartGame()</Member>
+        <Member type="Method">void addObserver(IObserver obs)</Member>
+        <Member type="Method">void notifyObservers()</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>GameWorldProxy</Name>
+        <Access>Public</Access>
+        <Location left="1318" top="922" />
+        <Size width="267" height="424" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">GameWorld realGameWorld</Member>
+        <Member type="Constructor">public GameWorldProxy()</Member>
+        <Member type="Method">public void setSound(boolean sound)</Member>
+        <Member type="Method">public void initLayout()</Member>
+        <Member type="Method">public void changeSnakeHeading(char direction)</Member>
+        <Member type="Method">public void collisionWithBody()</Member>
+        <Member type="Method">public void collisionWithBird()</Member>
+        <Member type="Method">public void collisionWithMoney()</Member>
+        <Member type="Method">public void collisionWithFood()</Member>
+        <Member type="Method">public void collisionWithWall()</Member>
+        <Member type="Method">public void collisionWithWeasel()</Member>
+        <Member type="Method">public void gameClockTick()</Member>
+        <Member type="Method">public void generateMap()</Member>
+        <Member type="Method">public void quit()</Member>
+        <Member type="Method">public void restartGame()</Member>
+        <Member type="Method">public void addObserver(IObserver obs)</Member>
+        <Member type="Method">public void notifyObservers()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>MapView</Name>
+        <Access>Public</Access>
+        <Location left="17" top="1728" />
+        <Size width="282" height="146" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">JPanel myPanel</Member>
+        <Member type="Constructor">public MapView()</Member>
+        <Member type="Method">public JPanel getMapPanel()</Member>
+        <Member type="Method">public void update(GameWorldProxy o, Object arg)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ScoreView</Name>
+        <Access>Public</Access>
+        <Location left="331" top="1728" />
+        <Size width="264" height="281" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">JPanel scoresPanel</Member>
+        <Member type="Field">JLabel time</Member>
+        <Member type="Field">JLabel score</Member>
+        <Member type="Field">JLabel lives</Member>
+        <Member type="Field">JLabel sound</Member>
+        <Member type="Field">int clockG</Member>
+        <Member type="Field">int livesG</Member>
+        <Member type="Field">int scoreG</Member>
+        <Member type="Field">boolean soundG</Member>
+        <Member type="Constructor">public ScoreView()</Member>
+        <Member type="Method">public JPanel getScoresPanel()</Member>
+        <Member type="Method">public void update(GameWorldProxy o, Object arg)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ObserversCollection</Name>
+        <Access>Public</Access>
+        <Location left="331" top="1169" />
+        <Size width="208" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">Vector theCollection</Member>
+        <Member type="Constructor">public ObserversCollection()</Member>
+        <Member type="Method">public void add(Object newObject)</Member>
+        <Member type="Method">public void remove(Object newObject)</Member>
+        <Member type="Method">public Iterator getIterator()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ObserverIterator</Name>
+        <Access>Public</Access>
+        <Location left="116" top="1172" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int currElementIndex</Member>
+        <Member type="Constructor">public ObserverIterator()</Member>
+        <Member type="Method">public boolean hasNext()</Member>
+        <Member type="Method">public Object next()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Weasel</Name>
+        <Access>Public</Access>
+        <Location left="500" top="2837" />
+        <Size width="208" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">IStrategy currStrategy</Member>
+        <Member type="Constructor">public Weasel()</Member>
+        <Member type="Method">public void setStrategy(Snake victim)</Member>
+        <Member type="Method">public void invokeStrategy()</Member>
+        <Member type="Method">public void move()</Member>
+        <Member type="Method">public static void randInt(int min, int max)</Member>
+        <Member type="Method">public String toString()</Member>
+        <Member type="Method">public void setLocation(Location location)</Member>
+        <Member type="Method">public void setColor(Color c)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>BoundaryMovement</Name>
+        <Access>Public</Access>
+        <Location left="316" top="3129" />
+        <Size width="162" height="247" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">Weasel client</Member>
+        <Member type="Field">double deltaX</Member>
+        <Member type="Field">double deltaY</Member>
+        <Member type="Field">float oldX</Member>
+        <Member type="Field">float oldY</Member>
+        <Member type="Field">float newX</Member>
+        <Member type="Field">float newY</Member>
+        <Member type="Constructor">public BoundaryMovement()</Member>
+        <Member type="Method">public void apply()</Member>
+        <Member type="Method">public String toString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ChaseMovement</Name>
+        <Access>Public</Access>
+        <Location left="125" top="3129" />
+        <Size width="162" height="349" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">Weasel client</Member>
+        <Member type="Field">Snake dinner</Member>
+        <Member type="Field">double deltaX</Member>
+        <Member type="Field">double deltaY</Member>
+        <Member type="Field">double xDiff</Member>
+        <Member type="Field">double yDiff</Member>
+        <Member type="Field">float oldX</Member>
+        <Member type="Field">float oldY</Member>
+        <Member type="Field">float newX</Member>
+        <Member type="Field">float newY</Member>
+        <Member type="Field">float dinnerX</Member>
+        <Member type="Field">float dinnerY</Member>
+        <Member type="Field">int newHeading</Member>
+        <Member type="Constructor">public ChaseMovement()</Member>
+        <Member type="Method">public void apply()</Member>
+        <Member type="Method">public String toString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>AboutCommand</Name>
+        <Access>Public</Access>
+        <Location left="59" top="69" />
+        <Size width="231" height="118" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public AboutCommand()</Member>
+        <Member type="Method">public void actionPerformed(ActionEvent e)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>BirdHitSnakeCommand</Name>
+        <Access>Public</Access>
+        <Location left="541" top="257" />
+        <Size width="231" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">GameWorld gw</Member>
+        <Member type="Constructor">public BirdHitSnakeCommand()</Member>
+        <Member type="Method">public void actionPerformed(ActionEvent e)</Member>
+        <Member type="Method">public void setTarget(GameWorld gw)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ChangeSnakeHeadingEast</Name>
+        <Access>Public</Access>
+        <Location left="1073" top="257" />
+        <Size width="231" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">GameWorld gw</Member>
+        <Member type="Constructor">public ChangeSnakeHeadingEast()</Member>
+        <Member type="Method">public void actionPerformed(ActionEvent e)</Member>
+        <Member type="Method">public void setTarget(GameWorld gw)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ChangeSnakeHeadingNorth</Name>
+        <Access>Public</Access>
+        <Location left="799" top="450" />
+        <Size width="231" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">GameWorld gw</Member>
+        <Member type="Constructor">public ChangeSnakeHeadingNorth()</Member>
+        <Member type="Method">public void actionPerformed(ActionEvent e)</Member>
+        <Member type="Method">public void setTarget(GameWorld gw)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ChangeSnakeHeadingSouth</Name>
+        <Access>Public</Access>
+        <Location left="1073" top="450" />
+        <Size width="231" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">GameWorld gw</Member>
+        <Member type="Constructor">public ChangeSnakeHeadingSouth()</Member>
+        <Member type="Method">public void actionPerformed(ActionEvent e)</Member>
+        <Member type="Method">public void setTarget(GameWorld gw)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ChangeSnakeHeadingWest</Name>
+        <Access>Public</Access>
+        <Location left="541" top="450" />
+        <Size width="231" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">GameWorld gw</Member>
+        <Member type="Constructor">public ChangeSnakeHeadingWest()</Member>
+        <Member type="Method">public void actionPerformed(ActionEvent e)</Member>
+        <Member type="Method">public void setTarget(GameWorld gw)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ChangeStrategiesCommand</Name>
+        <Access>Public</Access>
+        <Location left="541" top="633" />
+        <Size width="231" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">GameWorld gw</Member>
+        <Member type="Constructor">public ChangeStrategiesCommand()</Member>
+        <Member type="Method">public void actionPerformed(ActionEvent e)</Member>
+        <Member type="Method">public void setTarget(GameWorld gw)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ClockTickCommand</Name>
+        <Access>Public</Access>
+        <Location left="1073" top="633" />
+        <Size width="231" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">GameWorld gw</Member>
+        <Member type="Constructor">public ClockTickCommand()</Member>
+        <Member type="Method">public void actionPerformed(ActionEvent e)</Member>
+        <Member type="Method">public void setTarget(GameWorld gw)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SnakeHitMoneyCommand</Name>
+        <Access>Public</Access>
+        <Location left="269" top="633" />
+        <Size width="231" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">GameWorld gw</Member>
+        <Member type="Constructor">public SnakeHitMoneyCommand()</Member>
+        <Member type="Method">public void actionPerformed(ActionEvent e)</Member>
+        <Member type="Method">public void setTarget(GameWorld gw)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SnakeHitBodyCommand</Name>
+        <Access>Public</Access>
+        <Location left="1352" top="257" />
+        <Size width="231" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">GameWorld gw</Member>
+        <Member type="Constructor">public SnakeHitBodyCommand()</Member>
+        <Member type="Method">public void actionPerformed(ActionEvent e)</Member>
+        <Member type="Method">public void setTarget(GameWorld gw)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SnakeEatsFoodCommand</Name>
+        <Access>Public</Access>
+        <Location left="799" top="633" />
+        <Size width="231" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">GameWorld gw</Member>
+        <Member type="Constructor">public SnakeEatsFoodCommand()</Member>
+        <Member type="Method">public void actionPerformed(ActionEvent e)</Member>
+        <Member type="Method">public void setTarget(GameWorld gw)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>WeaselHitSnakeCommand</Name>
+        <Access>Public</Access>
+        <Location left="269" top="450" />
+        <Size width="231" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">GameWorld gw</Member>
+        <Member type="Constructor">public WeaselHitSnakeCommand()</Member>
+        <Member type="Method">public void actionPerformed(ActionEvent e)</Member>
+        <Member type="Method">public void setTarget(GameWorld gw)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SoundCommand</Name>
+        <Access>Public</Access>
+        <Location left="799" top="257" />
+        <Size width="231" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">GameWorld gw</Member>
+        <Member type="Constructor">public SoundCommand()</Member>
+        <Member type="Method">public void actionPerformed(ActionEvent e)</Member>
+        <Member type="Method">public void setTarget(GameWorld gw)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SnakeHitWallCommand</Name>
+        <Access>Public</Access>
+        <Location left="269" top="257" />
+        <Size width="231" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">GameWorld gw</Member>
+        <Member type="Constructor">public SnakeHitWallCommand()</Member>
+        <Member type="Method">public void actionPerformed(ActionEvent e)</Member>
+        <Member type="Method">public void setTarget(GameWorld gw)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>NewCommand</Name>
+        <Access>Public</Access>
+        <Location left="309" top="69" />
+        <Size width="231" height="118" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public NewCommand()</Member>
+        <Member type="Method">public void actionPerformed(ActionEvent e)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SaveCommand</Name>
+        <Access>Public</Access>
+        <Location left="815" top="69" />
+        <Size width="231" height="118" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public SaveCommand()</Member>
+        <Member type="Method">public void actionPerformed(ActionEvent e)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>QuitCommand</Name>
+        <Access>Public</Access>
+        <Location left="564" top="69" />
+        <Size width="231" height="118" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public QuitCommand()</Member>
+        <Member type="Method">public void actionPerformed(ActionEvent e)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>UndoCommand</Name>
+        <Access>Public</Access>
+        <Location left="1122" top="2837" />
+        <Size width="231" height="118" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public UndoCommand()</Member>
+        <Member type="Method">public void actionPerformed(ActionEvent e)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Generalization" first="6" second="5">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>340</X>
+          <Y>2504</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>343</X>
+          <Y>2446</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="8" second="5">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>391</X>
+          <Y>2446</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="7" second="5">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>121</X>
+          <Y>2500</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>222</X>
+          <Y>2362</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="5" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>339</X>
+          <Y>2122</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>660</X>
+          <Y>1989</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="11" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>753</X>
+          <Y>1977</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="9" second="11">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>798</X>
+          <Y>2446</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="10" second="11">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>912</X>
+          <Y>2302</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>847</X>
+          <Y>2302</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="9" second="12">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1069</X>
+          <Y>2718</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1078</X>
+          <Y>2718</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="9" second="13">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>854</X>
+          <Y>2964</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="13" second="14">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>878</X>
+          <Y>3230</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Realization" first="12" second="15">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1227</X>
+          <Y>2507</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1227</X>
+          <Y>2372</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="1" second="2">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Generalization" first="12" second="11">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>856</X>
+          <Y>2382</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="14" second="11">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>754</X>
+          <Y>2453</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="7" second="16">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>69</X>
+          <Y>2787</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>69</X>
+          <Y>2805</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="13" second="17">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="3" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>710</X>
+          <Y>1971</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>589</X>
+          <Y>2180</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="18" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>998</X>
+          <Y>1644</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>687</X>
+          <Y>1700</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="2" second="18">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>918</X>
+          <Y>1447</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>918</X>
+          <Y>1447</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Nesting" first="18" second="19">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Nesting" first="13" second="20">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>984</X>
+          <Y>3133</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>972</X>
+          <Y>3133</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="0" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Realization" first="2" second="24">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>914</X>
+          <Y>1078</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>927</X>
+          <Y>1078</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="25" second="24">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1291</X>
+          <Y>1071</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1262</X>
+          <Y>1071</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="25" second="2">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1293</X>
+          <Y>1319</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Realization" first="2" second="21">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>574</X>
+          <Y>1483</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>574</X>
+          <Y>1483</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="25" second="21">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="26" second="22">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>162</X>
+          <Y>1694</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="27" second="22">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>203</X>
+          <Y>1694</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="2" second="28">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Nesting" first="28" second="29">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="28" second="22">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Realization" first="18" second="17">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="28" second="17">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>581</X>
+          <Y>1330</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>917</X>
+          <Y>1691</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="30" second="11">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>733</X>
+          <Y>2854</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>733</X>
+          <Y>2449</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="31" second="23">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>216</X>
+          <Y>3098</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="32" second="23">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="30" second="23">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="26">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>291</X>
+          <Y>1163</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>44</X>
+          <Y>1667</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="27">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>423</X>
+          <Y>1163</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>573</X>
+          <Y>1163</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="33">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>519</X>
+          <Y>230</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>251</X>
+          <Y>212</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="47">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>517</X>
+          <Y>450</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="49">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>519</X>
+          <Y>229</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="48">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>517</X>
+          <Y>223</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>851</X>
+          <Y>216</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="41">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>425</X>
+          <Y>893</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>457</X>
+          <Y>812</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="39">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="43">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="40">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="44">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>424</X>
+          <Y>893</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="38">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="36">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="37">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="46">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>424</X>
+          <Y>897</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>371</X>
+          <Y>429</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="34">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>616</X>
+          <Y>432</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="45">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>934</X>
+          <Y>427</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="35">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1229</X>
+          <Y>433</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="42">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="39" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>728</X>
+          <Y>803</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>755</X>
+          <Y>892</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="41" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>755</X>
+          <Y>897</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="43" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="40" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>755</X>
+          <Y>897</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="44" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>452</X>
+          <Y>626</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>755</X>
+          <Y>897</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="38" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>674</X>
+          <Y>623</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>755</X>
+          <Y>897</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="36" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>755</X>
+          <Y>896</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="37" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1156</X>
+          <Y>621</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>755</X>
+          <Y>897</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="46" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>402</X>
+          <Y>430</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>757</X>
+          <Y>897</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="34" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>756</X>
+          <Y>896</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="45" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="35" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="42" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1423</X>
+          <Y>429</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
